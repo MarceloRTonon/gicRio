@@ -1,0 +1,59 @@
+---
+title: "load_42_pt"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The objective of this document is to show how we made the .rdata files of the Input-Output tables with 42 sectors.
+
+##Table of contents
+0. [Introduction](#intro)
+ [Loading the data](#load)
+ 
+### 0. Introduction {#intro}
+
+We consider that the user working directory at this point is the gicRio folder.
+
+```{r , echo=FALSE}
+#Loading libraries
+library(magrittr)
+library(readxl)
+#setting objects as the folders reference
+folder_gicRio <- "~/gicRio"
+folder_data <-  "~/gicRio/data"
+folder_rawdata <- "~/gicRio/data/raw_data"
+folder_finaldata <- "~/gicRio/data/final_data"
+folder_intermediarydata <- "~/gicRio/data/intermediary_data"
+
+#Creating a funct
+
+```
+
+## Loading the data{#load}
+
+### 1. Reading the labels
+
+In this part we are going to read the collumn names and row names, in portuguese, and transform they into objects.
+```{r, echo = false}
+setwd(folder_rawdata)
+label_GIC_42_pt <- read_excel("MIP_42/MIP_2000_42.xlsx", sheet = "D", range = "A6:A47", col_names = FALSE)
+
+label_GIC_91_pt <- read_excel("MIP_42/MIP_2000_42.xlsx", sheet = "Usos Nacional", range = "A6:A96", col_names = FALSE)
+
+label_finaldemand_pt <- read_excel("MIP_42/MIP_2000_42.xlsx", sheet = "Usos Nacional", range = "AT4:AY4", col_names = FALSE)
+
+label_demand_pt <- read_excel("MIP_42/MIP_2000_42.xlsx", sheet = "Usos Nacional", range = "AS4:AY4", col_names = FALSE)
+
+label_demand_pt[1] <- "Consumo Intermediário Total"
+
+label_col_nationaluse_pt <- read_excel("MIP_42/MIP_2000_42.xlsx", sheet = "Usos Nacional", range = "C4:BA4", col_names = FALSE)
+
+sector_description_91_pt <- read_excel("MIP_42/MIP_2000_42.xlsx", sheet = "Usos Nacional", range = "B6:B96", col_names = FALSE)
+
+sector_description_42_pt <- read_excel("MIP_42/MIP_2000_42.xlsx", sheet = "Usos Nacional", range = "C4:AR4", col_names = FALSE)
+
+```
+
